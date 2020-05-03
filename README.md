@@ -21,7 +21,7 @@ from.
  - Choose a small, odd integer number ***e***, where 1 < e < φ(n) 
  and *e* is a co-prime to ***φ(n)***. 
     - Check *calculateEncryptionExponent()* method
- - Calculate the integer number ***d***, where *e*d ≡ 1 mod φ(n)* and 1 <
+ - Calculate the integer number ***d***, where *e*d ≡ 1 mod φ(n) and 1 <
    d < φ(n).  
    - Using *Extended Euclidean Algorithm* 
    - Check *calculateDecryptionExponent()* method
@@ -33,7 +33,7 @@ from.
  
  > Using [FME Class](src/rsa/FME.java) 
 - To encrypt the message **m** (where m < n) using the public key ***PK = (n,
-   e)*** use the following formula: **(Fast Modular Exponent)**
+   e)*** following formula is used: **(Fast Modular Exponent)**
    
    ```
    c := EncPK(m) = m^e (mod n).
@@ -41,8 +41,8 @@ from.
   
 #### III. Decryption
 > Using [FME Class](src/rsa/FME.java)
-- To decrypt the secret message ***c*** using the secret key ***d*** use
-  the following formula: **(Fast Modular Exponent)**
+- To decrypt the secret message ***c*** using the secret key ***d***
+ following formula is used: **(Fast Modular Exponent)**
   
   ```
   m := DecSK(c) = c^d (mod n).
