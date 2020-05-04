@@ -13,7 +13,7 @@ public class FME {
      * @param a is the base of BigInteger type
      * @param b is the exponent of BigInteger type
      * @param value is modulo (m) of BigInteger type
-     * @return a^d (mod m)
+     * @return a^b (mod m)
      */
     static BigInteger test(BigInteger a, BigInteger b, BigInteger value){
 
