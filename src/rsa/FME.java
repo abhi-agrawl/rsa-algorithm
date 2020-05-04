@@ -11,22 +11,22 @@ public class FME {
     /**
      * Returns the mod using FME test.
      * @param a is the base of BigInteger type
-     * @param d is the exponent of BigInteger type
+     * @param b is the exponent of BigInteger type
      * @param value is modulo (m) of BigInteger type
      * @return a^d (mod m)
      */
-    static BigInteger test(BigInteger a, BigInteger d, BigInteger value){
+    static BigInteger test(BigInteger a, BigInteger b, BigInteger value){
 
         BigInteger finalNumber = BigInteger.ONE;
         BigInteger remainder = a.mod(value);
 
-        String binaryOfd = getBinary(d);
+        String binaryOfb = getBinary(b);
 
-        int len = binaryOfd.length() - 1;
+        int len = binaryOfb.length() - 1;
 
         for(int i=0; i <= len; i++){
 
-            if(binaryOfd.charAt(len - i) == '1')
+            if(binaryOfb.charAt(len - i) == '1')
                 finalNumber = finalNumber.multiply(remainder);
 
             remainder = remainder.multiply(remainder).mod(value);
@@ -36,7 +36,7 @@ public class FME {
 
     /**
      * Converts decimal number to binary number.
-     * @param number a decimal number which will be converted.
+     * @param number is decimal value which will be converted.
      * @return Binary Number in the form of String
      */
     private static String getBinary(BigInteger number){
