@@ -46,8 +46,11 @@ public class CreateRandom{
         }while(d.mod(BigInteger.TWO).equals(BigInteger.ZERO));
 
         BigInteger a, remainder;
+        boolean isComposite = true;
 
         for(int i=0;i<3;i++){
+
+            boolean isThisComposite = true;
 
             do{
                 a = new BigInteger(value.bitLength(), new SecureRandom());
@@ -55,15 +58,17 @@ public class CreateRandom{
 
             remainder = FME.test(a, d, value);
 
-            if(remainder.equals(BigInteger.ONE) || remainder.subtract(value).equals(BigInteger.ONE.negate())) return false;
+            if(remainder.equals(BigInteger.ONE) || remainder.subtract(value).equals(BigInteger.ONE.negate())) isThisComposite = false;
 
-            for(int j=1;j < s; j++){
+            for(int j=1;j < s && isThisComposite; j++){
 
                 remainder = remainder.multiply(remainder).mod(value);
-                if(remainder.subtract(value).equals(BigInteger.ONE.negate())) return false;
+                if(remainder.subtract(value).equals(BigInteger.ONE.negate())) isThisComposite = false;
             }
+
+            isComposite = isThisComposite;
         }
-        return true;
+        return isComposite;
     }
 
     public BigInteger getValue() {
