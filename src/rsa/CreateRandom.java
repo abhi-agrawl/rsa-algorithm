@@ -46,7 +46,6 @@ public class CreateRandom{
         }while(d.mod(BigInteger.TWO).equals(BigInteger.ZERO));
 
         BigInteger a, remainder;
-        boolean isComposite = true;
 
         for(int i=0;i<3;i++){
 
@@ -66,9 +65,10 @@ public class CreateRandom{
                 if(remainder.subtract(value).equals(BigInteger.ONE.negate())) isThisComposite = false;
             }
 
-            isComposite = isThisComposite;
+            if(isThisComposite)
+                return true;
         }
-        return isComposite;
+        return false;
     }
 
     public BigInteger getValue() {
