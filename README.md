@@ -20,6 +20,7 @@ from.
  - Let ***φ(n)*** = *(p-1)* * *(q-1)*
  - Choose a small, odd integer number ***e***, where 1 < e < φ(n) 
  and *e* is a co-prime to ***φ(n)***. 
+    - Using *Euclidean Algorithm*
     - Check *calculateEncryptionExponent()* method
  - Calculate the integer number ***d***, where *e*d ≡ 1 mod φ(n) and 1 <
    d < φ(n).  

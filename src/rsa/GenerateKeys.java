@@ -32,7 +32,6 @@ public class GenerateKeys {
             calculateDecryptionExponent();
 
             BigInteger m = BigInteger.valueOf(2);
-
             if (m.equals(FME.test(FME.test(m, BigInteger.valueOf(e), n), d, n)))
                 break;
         }
@@ -48,15 +47,28 @@ public class GenerateKeys {
         this.e = 3;
 
         while (true){
-            boolean isCoPrime = this.phiN.mod(BigInteger.valueOf(this.e)).equals(BigInteger.ZERO);
+            boolean isCoPrime = calculateGCD(BigInteger.valueOf(this.e), phiN).equals(BigInteger.ONE);
 
-            if(!isCoPrime) {
+            if(isCoPrime) {
                 break;
             }
             else
                 this.e += 2;
         }
+    }
 
+    /**
+     * Calculates GCD for encryptionExponent and
+     * the totient(n) using Euclidean Algorithm
+     * @param a is the encryptionExponent
+     * @param phiN is the totient(n)
+     * @return gcd of two values
+     */
+    public static BigInteger calculateGCD(BigInteger a, BigInteger phiN){
+
+        if(phiN.equals(BigInteger.ZERO))
+            return a;
+        return calculateGCD(phiN, a.mod(phiN));
     }
 
     /**
